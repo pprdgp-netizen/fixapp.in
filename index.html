@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FixApp - We Fixxed Your Need</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles and Variables */
+        :root {
+            --deep-blue: #1a365d;
+            --teal: #38b2ac;
+            --yellow: #f6e05e;
+            --white: #ffffff;
+            --light-gray: #f7fafc;
+            --dark-gray: #4a5568;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--deep-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            color: var(--teal);
+            margin-right: 8px;
+            font-size: 2rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--deep-blue);
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--teal);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(to right, var(--deep-blue) 60%, var(--teal));
+            color: var(--white);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .brand-name {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        
+        .slogan {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .slogan span {
+            color: var(--yellow);
+            font-weight: 700;
+        }
+        
+        .call-to-action {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .call-btn {
+            background-color: var(--yellow);
+            color: var(--deep-blue);
+            border: none;
+            padding: 18px 30px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+        
+        .call-btn:hover {
+            background-color: #f0d14a;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .phone-icon {
+            font-size: 1.5rem;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .service-illustration {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: var(--dark-gray);
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: var(--teal);
+            margin-bottom: 20px;
+            height: 80px;
+            width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(56, 178, 172, 0.1);
+            border-radius: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .service-title {
+            font-size: 1.5rem;
+            color: var(--deep-blue);
+            margin-bottom: 15px;
+        }
+        
+        .service-description {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+        }
+        
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 20px;
+        }
+        
+        .service-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--deep-blue);
+            color: var(--white);
+            padding: 50px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+        
+        .footer-slogan {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .footer-slogan span {
+            color: var(--yellow);
+            font-weight: 700;
+        }
+        
+        .footer-contact {
+            text-align: right;
+        }
+        
+        .footer-phone {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--yellow);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .footer-phone:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-note {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .brand-name {
+                font-size: 3rem;
+            }
+            
+            .slogan {
+                font-size: 1.6rem;
+            }
+            
+            .call-to-action {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .mobile-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            
+            .mobile-menu.active {
+                display: block;
+            }
+            
+            .mobile-nav-links {
+                list-style: none;
+            }
+            
+            .mobile-nav-links li {
+                margin-bottom: 15px;
+            }
+            
+            .mobile-nav-links a {
+                text-decoration: none;
+                color: var(--deep-blue);
+                font-weight: 600;
+                display: block;
+                padding: 10px 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            }
+            
+            .brand-name {
+                font-size: 2.5rem;
+            }
+            
+            .slogan {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-contact {
+                text-align: center;
+            }
+            
+            .footer-phone {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .brand-name {
+                font-size: 2.2rem;
+            }
+            
+            .slogan {
+                font-size: 1.2rem;
+            }
+            
+            .call-btn {
+                padding: 15px 20px;
+                font-size: 1.1rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-tools logo-icon"></i>
+                    FixApp
+                </a>
+                
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+            
+            <!-- Mobile Menu -->
+            <div class="mobile-menu" id="mobileMenu">
+                <ul class="mobile-nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="brand-name">FixApp</h1>
+                    <p class="slogan">We <span>Fixxed</span> Your Need</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 20px; opacity: 0.9;">
+                        Your one-stop solution for all repair and maintenance services. From home appliances to business equipment, we fix it all with speed and precision.
+                    </p>
+                    
+                    <div class="call-to-action">
+                        <a href="tel:7407409494" class="call-btn">
+                            <i class="fas fa-phone-alt phone-icon"></i>
+                            Call Us: 7407409494
+                        </a>
+                    </div>
+                    
+                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
+                        <i class="fas fa-clock" style="margin-right: 5px;"></i> Available 24/7 • Quick Response • Professional Service
+                    </p>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="service-illustration">
+                        <!-- Illustration created with pure CSS -->
+                        <div style="background: linear-gradient(135deg, var(--yellow) 0%, var(--teal) 100%); width: 350px; height: 350px; border-radius: 10px; display: flex; align-items: center; justify-content: center; position: relative;">
+                            <div style="position: relative;">
+                                <i class="fas fa-tools" style="font-size: 8rem; color: var(--white); opacity: 0.9;"></i>
+                                <div style="position: absolute; top: -30px; right: -40px; background: var(--deep-blue); color: var(--white); padding: 15px; border-radius: 50%; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.2rem;">
+                                    24/7
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <p class="section-subtitle">
+                We provide comprehensive repair and maintenance services for homes and businesses across India. Trust our certified professionals for all your repair needs.
+            </p>
+            
+            <div class="services-grid">
+                <!-- Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="service-title">Home Services</h3>
+                    <p class="service-description">
+                        Complete home repair and maintenance solutions for appliances, plumbing, electrical, and more.
+                    </p>
+                    <ul class="service-features">
+                        <li>Appliance Repair (AC, Fridge, Washing Machine)</li>
+                        <li>Electrical & Plumbing Services</li>
+                        <li>Carpentry & Furniture Repair</li>
+                        <li>Home Maintenance Packages</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="service-title">Business Support</h3>
+                    <p class="service-description">
+                        Professional maintenance and repair services for offices, retail spaces, and commercial establishments.
+                    </p>
+                    <ul class="service-features">
+                        <li>Office Equipment Repair</li>
+                        <li>IT Hardware Support</li>
+                        <li>Commercial HVAC Services</li>
+                        <li>Preventive Maintenance Plans</li>
+                    </ul>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="service-title">Quick Assistance</h3>
+                    <p class="service-description">
+                        Emergency repair services with quick response times, available 24/7 for urgent issues.
+                    </p>
+                    <ul class="service-features">
+                        <li>Emergency Electrical Repairs</li>
+                        <li>Urgent Plumbing Solutions</li>
+                        <li>Lockout & Security Services</li>
+                        <li>Same-Day Service Guarantee</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">FixApp</div>
+                    <p class="footer-slogan">We <span>Fixxed</span> Your Need</p>
+                </div>
+                
+                <div class="footer-contact">
+                    <a href="tel:7407409494" class="footer-phone">
+                        <i class="fas fa-phone-alt"></i>
+                        7407409494
+                    </a>
+                    <p class="footer-note">Call us anytime for quick, reliable service</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 FixApp. All rights reserved. | Your trusted service partner across India</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">Available in Mumbai, Delhi, Bangalore, Hyderabad, and 20+ cities</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+            
+            // Change icon
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobileMenu').classList.remove('active');
+                document.getElementById('mobileMenuBtn').querySelector('i').classList.remove('fa-times');
+                document.getElementById('mobileMenuBtn').querySelector('i').classList.add('fa-bars');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
