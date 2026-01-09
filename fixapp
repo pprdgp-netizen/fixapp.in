@@ -1,0 +1,93 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FixApp – We Fixxed Your Need</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:#fff;
+text-align:center;
+}
+header{
+padding:70px 20px;
+}
+h1{
+font-size:3rem;
+margin-bottom:10px;
+}
+p{
+font-size:1.2rem;
+}
+.call{
+margin-top:25px;
+display:inline-block;
+padding:15px 30px;
+background:#ffcc00;
+color:#000;
+border-radius:30px;
+text-decoration:none;
+font-weight:600;
+}
+section{
+padding:50px 20px;
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+max-width:900px;
+margin:auto;
+}
+.card{
+background:rgba(255,255,255,0.1);
+padding:25px;
+border-radius:15px;
+}
+footer{
+padding:20px;
+background:rgba(0,0,0,0.3);
+font-size:0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>FixApp</h1>
+<p>We Fixxed Your Need</p>
+<a class="call" href="tel:7407409494">📞 Call Us: 7407409494</a>
+</header>
+
+<section>
+<h2>Our Services</h2>
+<div class="cards">
+<div class="card">
+<h3>Home Services</h3>
+<p>Electrician, plumber & repairs</p>
+</div>
+<div class="card">
+<h3>Business Support</h3>
+<p>Office & technical assistance</p>
+</div>
+<div class="card">
+<h3>Quick Help</h3>
+<p>Fast response for urgent needs</p>
+</div>
+</div>
+</section>
+
+<footer>
+© 2026 FixApp | We Fixxed Your Need | Call: 7407409494
+</footer>
+
+</body>
+</html>
